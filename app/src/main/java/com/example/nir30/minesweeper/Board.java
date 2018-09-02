@@ -5,27 +5,27 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Board {
     private int numOfRows;
     private int numOfCols;
-    private int numOfBombs;
+    private int numOfMines;
     private Cell[][] boardMatrix;
-    ArrayList<Point> minesLocation; // Locations of all the mines (i,j)
+    private ArrayList<Point> minesLocation; // Locations of all the mines (i,j)
 
-    public Board(int numOfRows, int mumOfCols, int numOfBombs) {
+    public Board(int numOfRows, int mumOfCols, int numOfMines) {
         this.numOfRows = numOfRows;
         this.numOfCols = mumOfCols;
-        this.numOfBombs = numOfBombs;
+        this.numOfMines = numOfMines;
+        setBoard();
+    }
+
+
+    private void setBoard(){
         initBoard();
-        Log.d("ctr", "inited");
         randomlyDispersMines();
-        Log.d("ctr", "randomlyDispersMines");
         setValueForCells();
-        Log.d("ctr", "setValueForCells");
-        String matrixStr = printBoard();
-        Log.d("ctr", matrixStr);
+        Log.d("ctr", printBoard());
     }
 
     private void  setValueForCells(){
@@ -41,7 +41,7 @@ public class Board {
         }
     }
 
-    private String printBoard (){
+    private String printBoard (){ // for debug
         StringBuffer sb = new StringBuffer();
 
         for(int i = 0 ; i < boardMatrix.length ; i++) {
@@ -61,7 +61,7 @@ public class Board {
     {
         Random rnd = new Random();
         minesLocation = new ArrayList<>();
-        int mineToDispers = numOfBombs;
+        int mineToDispers = numOfMines;
         boolean mineAlreadyExist = false;
         while(mineToDispers > 0) {
             Point newMine = new Point(rnd.nextInt(numOfRows), rnd.nextInt(numOfCols));
