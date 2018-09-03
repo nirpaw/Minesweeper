@@ -20,7 +20,6 @@ public class Board {
         setBoard();
     }
 
-
     public int getNumOfMines() {
         return numOfMines;
     }
@@ -30,13 +29,13 @@ public class Board {
     }
 
     private void setBoard(){
-        initBoard();
+        initEmptyMatrix();
         randomlyDispersMines();
         setValueForCells();
         Log.d("ctr", printBoard());
     }
 
-    private void  setValueForCells(){
+    private void  setValueForCells(){ // Runs on each mine neighbors and add 1 to his value(minesAround)
         for (Point mine:this.minesLocation) {
             for(int i = mine.x - 1 ; i <= mine.x + 1 ; i++){
                 for (int j = mine.y - 1 ; j <= mine.y + 1 ; j++ ){
@@ -88,7 +87,7 @@ public class Board {
         }
     }
 
-    private void initBoard(){
+    private void initEmptyMatrix(){
         this.boardMatrix =  new Cell[numOfRows][numOfCols];
         for(int i = 0 ; i < boardMatrix.length ; i++) {
             for (int j = 0 ; j < boardMatrix[0].length ; j++){

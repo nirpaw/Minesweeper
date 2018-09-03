@@ -56,7 +56,16 @@ public class GameActivity extends Activity {
     public class GameButtonLongClickListener implements View.OnLongClickListener{
         @Override
         public boolean onLongClick(View view) {
-            ((GameButton)view).setText("F");
+            if (((GameButton)view).isUserFlag())
+                {
+                ((GameButton)view).setUserFlag(false);
+                // TODO: animation of flag out
+                ((GameButton)view).setText(""); // for debug only
+            }else {
+                ((GameButton)view).setUserFlag(true);
+                // TODO: animation of flag IN
+                ((GameButton)view).setText("!"); // for debug only
+            }
             return true;
         }
     }
@@ -66,8 +75,10 @@ public class GameActivity extends Activity {
             int row = ((GameButton)view).i;
             int col = ((GameButton)view).j;
             String str = logicBoard[row][col].getMinesAround() + "";
-            if(logicBoard[row][col].isMine())
-                str = "X";
+            if(logicBoard[row][col].isMine()){
+                // GAME OVER
+                str = "X"; // for debug
+            }
             ((GameButton)view).setText(str.toString());
 
         }
