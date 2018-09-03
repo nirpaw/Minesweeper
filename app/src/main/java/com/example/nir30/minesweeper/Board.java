@@ -21,6 +21,14 @@ public class Board {
     }
 
 
+    public int getNumOfMines() {
+        return numOfMines;
+    }
+
+    public Cell[][] getBoardMatrix() {
+        return boardMatrix;
+    }
+
     private void setBoard(){
         initBoard();
         randomlyDispersMines();
