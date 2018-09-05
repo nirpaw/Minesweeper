@@ -20,6 +20,8 @@ public class GameActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+
         table = (TableLayout)findViewById(R.id.table_layout);
 
         Board gameBoard = new Board(10,10,5);
@@ -57,7 +59,7 @@ public class GameActivity extends Activity {
         @Override
         public boolean onLongClick(View view) {
             if (((GameButton)view).isUserFlag())
-                {
+            {
                 ((GameButton)view).setUserFlag(false);
                 // TODO: animation of flag out
                 ((GameButton)view).setText(""); // for debug only
