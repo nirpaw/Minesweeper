@@ -20,7 +20,7 @@ public class GameActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        table = (TableLayout)findViewById(R.id.table_layout);
+        //table = (TableLayout)findViewById(R.id.table_layout);
 
         Board gameBoard = new Board(10,10,5);
         logicBoard = gameBoard.getBoardMatrix();
@@ -80,7 +80,6 @@ public class GameActivity extends Activity {
                 str = "X"; // for debug
             }
             ((GameButton)view).setText(str.toString());
-
         }
     }
 
