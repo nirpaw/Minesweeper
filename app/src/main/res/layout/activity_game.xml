@@ -4,33 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".GameActivity">.
 
-    <TextView
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:gravity="center"-->
+    <!--android:text="TITLE"-->
+    <!--android:textSize="50dp" />-->
 
+    <com.otaliastudios.zoom.ZoomLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:text="TITLE"
-        android:textSize="50dp" />
-
-    <ScrollView
-        android:id="@+id/sv_layout"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="30dp">
+        android:scrollbars="vertical|horizontal"
+        app:overScrollHorizontal="true"
+        app:overScrollVertical="true"
+        app:overPinchable="true"
+        app:horizontalPanEnabled="true"
+        app:verticalPanEnabled="true"
+        app:zoomEnabled="true"
+        app:minZoom="0.5"
+        app:minZoomType="zoom"
+        app:maxZoom="1.0"
+        app:maxZoomType="zoom"
+        app:hasClickableChildren="true">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <!-- Content here. -->
 
-            <TableLayout
-                android:id="@+id/table_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+        <!--<ScrollView-->
+        <!--android:id="@+id/sv_layout"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_width="match_parent"-->
+        <!--tools:layout_editor_absoluteX="8dp"-->
+        <!--tools:layout_editor_absoluteY="30dp">-->
 
-            </TableLayout>
-        </HorizontalScrollView>
-    </ScrollView>
+        <!--<HorizontalScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <TableLayout
+            android:id="@+id/table_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TableLayout>
+        <!--</HorizontalScrollView>-->
+        <!--</ScrollView>-->
+    </com.otaliastudios.zoom.ZoomLayout>
+
 </android.support.constraint.ConstraintLayout>
