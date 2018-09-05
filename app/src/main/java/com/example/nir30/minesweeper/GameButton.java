@@ -8,9 +8,11 @@ import android.widget.ImageView;
 
 public class GameButton extends Button{
     int i, j ;
+    boolean buttonIsPressed;
     boolean userFlag; //user set as flag
     public GameButton(Context context, int i , int j ){
         super(context);
+        this.buttonIsPressed = false;
         this.i = i;
         this.j = j;
     }

@@ -33,4 +33,12 @@ public class Cell extends  Point{
     public void setMinesAround(int minesAround) {
         this.minesAround = minesAround;
     }
+
+    public boolean isPressed() {
+        return isPressed;
+    }
+
+    public void setPressed(boolean pressed) {
+        isPressed = pressed;
+    }
 }

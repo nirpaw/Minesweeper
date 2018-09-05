@@ -1,6 +1,7 @@
 package com.example.nir30.minesweeper;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,7 +48,7 @@ public class GameActivity extends Activity {
                         TableRow.LayoutParams.MATCH_PARENT,1.0f));
                 gameButton.setOnClickListener(gameButtonListener);
                 gameButton.setOnLongClickListener(gameButtonLongClickListener);
-
+                gameButton.setBackgroundResource(R.drawable.ic_launcher_background);
                 tableRow.addView(gameButton);
             }
         }
@@ -57,7 +58,7 @@ public class GameActivity extends Activity {
         @Override
         public boolean onLongClick(View view) {
             if (((GameButton)view).isUserFlag())
-                {
+            {
                 ((GameButton)view).setUserFlag(false);
                 // TODO: animation of flag out
                 ((GameButton)view).setText(""); // for debug only
@@ -69,18 +70,46 @@ public class GameActivity extends Activity {
             return true;
         }
     }
+
     public class GameButtonListener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
             int row = ((GameButton)view).i;
             int col = ((GameButton)view).j;
-            String str = logicBoard[row][col].getMinesAround() + "";
-            if(logicBoard[row][col].isMine()){
+
+            String str= "";
+            if(logicBoard[row][col].getMinesAround() != 0)
+            {
+                str = logicBoard[row][col].getMinesAround() + "";
+            } else if(logicBoard[row][col].isMine()){
                 // GAME OVER
                 str = "X"; // for debug
+            } else if(logicBoard[row][col].getMinesAround() == 0){
+
             }
             ((GameButton)view).setText(str.toString());
         }
     }
+
+    private void  pressBtn(int row, int col){
+        if(logicBoard[row][col].isMine())
+        {
+            // GAME OVER
+            return;
+        }
+        if (logicBoard[row][col].getMinesAround() == 0){
+            for(int i = row - 1 ; i <= row + 1 ; i++){
+                for (int j = col - 1 ; j <= col + 1 ; j++ ){
+                    if(!(i < 0 || i >= logicBoard.length || j < 0 || j >= logicBoard[0].length))
+                    {
+                        pressBtn(i, j);
+                    }
+                }
+            }
+        } else {
+
+        }
+    }
+//    TODO: REFRESH MATRIX
 
 }
