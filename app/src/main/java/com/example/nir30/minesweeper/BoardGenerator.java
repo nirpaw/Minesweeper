@@ -6,14 +6,14 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Board {
+public class BoardGenerator {
     private int numOfRows;
     private int numOfCols;
     private int numOfMines;
-    private Cell[][] boardMatrix;
+    private CellGenerator[][] boardMatrix;
     private ArrayList<Point> minesLocation; // Locations of all the mines (i,j)
 
-    public Board(int numOfRows, int mumOfCols, int numOfMines) {
+    public BoardGenerator(int numOfRows, int mumOfCols, int numOfMines) {
         this.numOfRows = numOfRows;
         this.numOfCols = mumOfCols;
         this.numOfMines = numOfMines;
@@ -24,7 +24,7 @@ public class Board {
         return numOfMines;
     }
 
-    public Cell[][] getBoardMatrix() {
+    public CellGenerator[][] getBoardMatrix() {
         return boardMatrix;
     }
 
@@ -33,8 +33,14 @@ public class Board {
         randomlyDispersMines();
         setValueForCells();
         Log.d("ctr", printBoard());
+        removeValueForMines();
     }
 
+    private void removeValueForMines(){
+        for (Point mine: minesLocation) {
+            boardMatrix[mine.x][mine.y].setMinesAround(-1);
+        }
+    }
     private void  setValueForCells(){ // Runs on each mine neighbors and add 1 to his value(minesAround)
         for (Point mine:this.minesLocation) {
             for(int i = mine.x - 1 ; i <= mine.x + 1 ; i++){
@@ -81,6 +87,7 @@ public class Board {
             if (!mineAlreadyExist){
                 minesLocation.add(newMine);
                 this.boardMatrix[newMine.x][newMine.y].setMine(true);
+                this.boardMatrix[newMine.x][newMine.y].setMinesAround(-1); // no value needed
                 mineToDispers--;
             }
             mineAlreadyExist = false;
@@ -88,10 +95,10 @@ public class Board {
     }
 
     private void initEmptyMatrix(){
-        this.boardMatrix =  new Cell[numOfRows][numOfCols];
+        this.boardMatrix =  new CellGenerator[numOfRows][numOfCols];
         for(int i = 0 ; i < boardMatrix.length ; i++) {
             for (int j = 0 ; j < boardMatrix[0].length ; j++){
-                this.boardMatrix[i][j] = new Cell(i,j);
+                this.boardMatrix[i][j] = new CellGenerator(i,j);
             }
         }
     }

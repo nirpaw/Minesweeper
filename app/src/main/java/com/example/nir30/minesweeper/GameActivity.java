@@ -1,33 +1,33 @@
 package com.example.nir30.minesweeper;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class GameActivity extends Activity {
 
     TableLayout table;
-    Cell [][] logicBoard;
+    CellGenerator[][] logicBoard;
     int numOfMines;
-
+        ArrayList<GameButton> gameButtons;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        table = (TableLayout)findViewById(R.id.table_layout);
 
-        Board gameBoard = new Board(10,10,5);
-        logicBoard = gameBoard.getBoardMatrix();
-        numOfMines = gameBoard.getNumOfMines();
+        gameButtons = new ArrayList<>();
+      //  table = (TableLayout)findViewById(R.id.table_layout);
+
+        BoardGenerator gameBoardGenerator = new BoardGenerator(10,10,4);
+        logicBoard = gameBoardGenerator.getBoardMatrix();
+        numOfMines = gameBoardGenerator.getNumOfMines();
         creatMatrix();
     }
+
 
     private void creatMatrix()
     {
@@ -48,12 +48,15 @@ public class GameActivity extends Activity {
                         TableRow.LayoutParams.MATCH_PARENT,1.0f));
                 gameButton.setOnClickListener(gameButtonListener);
                 gameButton.setOnLongClickListener(gameButtonLongClickListener);
-                gameButton.setBackgroundResource(R.drawable.ic_launcher_background);
+  //              gameButton.setBackgroundResource(R.color.colorPrimaryDark);
                 tableRow.addView(gameButton);
+                gameButtons.add(gameButton); // add to list of all buttons
             }
         }
     }
 
+
+    // Long Press on button listener - Set Flag
     public class GameButtonLongClickListener implements View.OnLongClickListener{
         @Override
         public boolean onLongClick(View view) {
@@ -71,23 +74,32 @@ public class GameActivity extends Activity {
         }
     }
 
+    // Click on button
     public class GameButtonListener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
             int row = ((GameButton)view).i;
             int col = ((GameButton)view).j;
-
+            if (logicBoard[row][col].isPressed())
+            {
+                return;
+            }
             String str= "";
+
+            if(logicBoard[row][col].isMine())
+            {
+                str = "X"; // for debug GAMEOVER
+            }
             if(logicBoard[row][col].getMinesAround() != 0)
             {
                 str = logicBoard[row][col].getMinesAround() + "";
-            } else if(logicBoard[row][col].isMine()){
-                // GAME OVER
-                str = "X"; // for debug
+      //          view.setBackgroundResource(R.color.colorAccent);
             } else if(logicBoard[row][col].getMinesAround() == 0){
-
+               //
+                str = "[]";
+                pressBtn(row, col);
             }
-            ((GameButton)view).setText(str.toString());
+            ((GameButton)view).setText(str);
         }
     }
 
@@ -107,9 +119,19 @@ public class GameActivity extends Activity {
                 }
             }
         } else {
+            logicBoard[row][col].isPressed();
+        }
+        refreshMatrixButtons();
+    }
+
+    private void refreshMatrixButtons(){
+        for (GameButton button : this.gameButtons) {
+            if (logicBoard[button.i][button.j].isPressed())
+            {
+                button.setClickable(false);
+                button.setText("[]");
+            }
 
         }
     }
-//    TODO: REFRESH MATRIX
-
 }

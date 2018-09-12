@@ -1,12 +1,15 @@
 package com.example.nir30.minesweeper;
 
-import android.graphics.Point;
 
-public class Cell extends  Point{
+import java.util.*;
+import android.graphics.*;
+
+
+public class CellGenerator extends  Point{
     private  int  minesAround;
     private boolean isPressed, isMine, userSetFlag;
 
-    public Cell(int i, int j) {
+    public CellGenerator(int i, int j) {
         super(i ,j);
         isPressed = false;
         isMine = false;
