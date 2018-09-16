@@ -7,8 +7,9 @@ import com.example.nir30.minesweeper.Generator.BoardGenerator;
 import com.example.nir30.minesweeper.grid.Cell;
 
 public class SessionManager {
-    private int correctFlagsCounter = 0;
 
+    private int totalFlagsCounter = 0;
+    private int correctFlagsCounter = 0;
     private static SessionManager instance;
     private Context context;
     int[][] gameBoard; // generated logic board
@@ -67,6 +68,9 @@ public class SessionManager {
     public void  click (int Xpos, int Ypos){
 
         if(Xpos >= 0 && Ypos >= 0 && Xpos < numOfRows && Ypos < numOfCols && !getCellAt(Xpos, Ypos).isClicked()){
+            if(getCellAt(Xpos, Ypos).isFlaged()){
+                return;
+            }
             getCellAt(Xpos, Ypos).setClicked();
             // check if neibers are 0`S
             if (getCellAt(Xpos, Ypos).getValue() == 0 ) {
@@ -86,23 +90,29 @@ public class SessionManager {
     }
 
     public void flag(int x , int y){
+        if(getCellAt(x,y).isClicked()){
+            return;
+        }
         boolean isFlagged = getCellAt(x, y).isFlaged();
         if(!isFlagged) {
             getCellAt(x, y).setFlaged(true);
             if(getCellAt(x, y ).isMine()){
                 this.correctFlagsCounter++;
             }
+            totalFlagsCounter++;
         }else {
             getCellAt(x,y).setFlaged(false);
             if (getCellAt(x,y).isMine()){
                 this.correctFlagsCounter--;
             }
+            totalFlagsCounter--;
         }
         getCellAt(x , y).invalidate();
         checkWinning();
     }
 
     private void onGameLost(){ //TODO: BANNNER ? ACTIVITY?
+
         Toast.makeText(context , "Gmae over " , Toast.LENGTH_SHORT).show();
     }
 
@@ -114,8 +124,9 @@ public class SessionManager {
 
     private void onGameWin(){//TODO: BANNNER ? ACTIVITY?
         Toast.makeText(context , "WIN! " , Toast.LENGTH_SHORT).show();
-
     }
 
-
+    public int getTotalFlagsCounter() {
+        return totalFlagsCounter;
+    }
 }

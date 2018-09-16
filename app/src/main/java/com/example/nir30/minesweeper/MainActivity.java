@@ -12,7 +12,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_new);
+        setContentView(R.layout.activity_main);
+        Button btn = findViewById(R.id.btn_start);
+        Intent intent = new Intent(MainActivity.this , GameActivity.class);
+        startActivity(intent);
 
     }
 }
