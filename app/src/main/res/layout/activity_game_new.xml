@@ -4,7 +4,17 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Timer and stuff"
+            android:textSize="30dp"/>
+    </RelativeLayout>
     <com.example.nir30.minesweeper.grid.Grid
+        android:layout_marginTop="80dp"
         android:id="@+id/minesweeper_grid_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

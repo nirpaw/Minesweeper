@@ -7,17 +7,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
-import com.example.nir30.minesweeper.GameEngine;
-
-import java.util.jar.Attributes;
+import com.example.nir30.minesweeper.SessionManager;
 
 
 public class Grid extends GridView{
 
     public Grid(Context context , AttributeSet attrs){
         super(context,attrs);
-        GameEngine.getInstance().creatBoard(context);
-        setNumColumns(GameEngine.numOfCols);
+        SessionManager.getInstance().creatBoard(context);
+        setNumColumns(SessionManager.numOfCols);
         setAdapter(new GridAddapter());
     }
 
@@ -29,7 +27,7 @@ public class Grid extends GridView{
     private class GridAddapter extends BaseAdapter{
         @Override
         public int getCount() {
-            return GameEngine.getInstance().getSize();
+            return SessionManager.getInstance().getSize();
         }
 
         @Override
@@ -44,7 +42,7 @@ public class Grid extends GridView{
 
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
-            return GameEngine.getInstance().getCellAt(position);
+            return SessionManager.getInstance().getCellAt(position);
         }
     }
 

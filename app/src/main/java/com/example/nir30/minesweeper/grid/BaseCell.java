@@ -3,7 +3,7 @@ package com.example.nir30.minesweeper.grid;
 import android.content.Context;
 import android.view.View;
 
-import com.example.nir30.minesweeper.GameEngine;
+import com.example.nir30.minesweeper.SessionManager;
 
 public class BaseCell extends View{
     private int value;
@@ -84,17 +84,17 @@ public class BaseCell extends View{
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-        x = position % GameEngine.numOfRows;
-        y = position % GameEngine.numOfCols;
-        invalidate();
-    }
+//    public void setPosition(int position) {
+//        this.position = position;
+//        x = position / SessionManager.numOfRows;
+//        y = position % SessionManager.numOfCols;
+//        invalidate();
+//    }
 
     public void setPosition(int x, int y){
         this.x = x;
         this.y = y;
-        this.position = x + GameEngine.numOfCols + y;
+        this.position = x * SessionManager.numOfCols + y ; // setting an individual code for each cell
         invalidate();
 
     }

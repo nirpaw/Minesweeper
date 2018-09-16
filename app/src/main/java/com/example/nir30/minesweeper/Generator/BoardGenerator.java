@@ -1,4 +1,4 @@
-package com.example.nir30.minesweeper;
+package com.example.nir30.minesweeper.Generator;
 
 import android.graphics.Point;
 import android.util.Log;
@@ -6,11 +6,14 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
+//  -1 means a mine
+
 public class BoardGenerator {
-    private int numOfRows;
+
     private int numOfCols;
+    private int numOfRows;
     private int numOfMines;
-    private CellGenerator[][] boardMatrix;
+    private int[][] boardMatrix;
     private ArrayList<Point> minesLocation; // Locations of all the mines (i,j)
 
     public BoardGenerator(int numOfRows, int mumOfCols, int numOfMines) {
@@ -24,30 +27,25 @@ public class BoardGenerator {
         return numOfMines;
     }
 
-    public CellGenerator[][] getBoardMatrix() {
+    public int[][] getBoardMatrix() {
         return boardMatrix;
     }
 
     private void setBoard(){
-        initEmptyMatrix();
+        this.boardMatrix =  new int[numOfRows][numOfCols]; // initEmptyMatrix
         randomlyDispersMines();
         setValueForCells();
         Log.d("ctr", printBoard());
-        removeValueForMines();
     }
 
-    private void removeValueForMines(){
-        for (Point mine: minesLocation) {
-            boardMatrix[mine.x][mine.y].setMinesAround(-1);
-        }
-    }
     private void  setValueForCells(){ // Runs on each mine neighbors and add 1 to his value(minesAround)
         for (Point mine:this.minesLocation) {
             for(int i = mine.x - 1 ; i <= mine.x + 1 ; i++){
                 for (int j = mine.y - 1 ; j <= mine.y + 1 ; j++ ){
                     if(!(i < 0 || i >= boardMatrix.length || j < 0 || j >= boardMatrix[0].length))
                     {
-                        boardMatrix[i][j].addOneMineAround();
+                        if(boardMatrix[i][j] != -1)
+                        boardMatrix[i][j]++;
                     }
                 }
             }
@@ -59,10 +57,10 @@ public class BoardGenerator {
 
         for(int i = 0 ; i < boardMatrix.length ; i++) {
             for (int j = 0 ; j < boardMatrix[0].length ; j++){
-                if (this.boardMatrix[i][j].isMine()){
+                if (this.boardMatrix[i][j] == -1){
                     sb.append("X|");
                 }else {
-                    sb.append(boardMatrix[i][j].getMinesAround()+"|");
+                    sb.append(boardMatrix[i][j]+"|");
                 }
             }
             sb.append("\n");
@@ -83,23 +81,12 @@ public class BoardGenerator {
                     mineAlreadyExist = true;
                 }
             }
-
             if (!mineAlreadyExist){
                 minesLocation.add(newMine);
-                this.boardMatrix[newMine.x][newMine.y].setMine(true);
-                this.boardMatrix[newMine.x][newMine.y].setMinesAround(-1); // no value needed
+                this.boardMatrix[newMine.x][newMine.y] = -1;
                 mineToDispers--;
             }
             mineAlreadyExist = false;
-        }
-    }
-
-    private void initEmptyMatrix(){
-        this.boardMatrix =  new CellGenerator[numOfRows][numOfCols];
-        for(int i = 0 ; i < boardMatrix.length ; i++) {
-            for (int j = 0 ; j < boardMatrix[0].length ; j++){
-                this.boardMatrix[i][j] = new CellGenerator(i,j);
-            }
         }
     }
 }

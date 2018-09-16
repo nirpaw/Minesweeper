@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.example.nir30.minesweeper.GameEngine;
+import com.example.nir30.minesweeper.SessionManager;
 import com.example.nir30.minesweeper.R;
 
 public class Cell extends BaseCell implements View.OnClickListener, View.OnLongClickListener{
@@ -22,13 +22,13 @@ public class Cell extends BaseCell implements View.OnClickListener, View.OnLongC
 
     @Override
     public boolean onLongClick(View view) {
-        GameEngine.getInstance().flag(getXpos(), getYpos());
+        SessionManager.getInstance().flag(getXpos(), getYpos());
         return true;
     }
 
     @Override
     public void onClick(View view) {
-        GameEngine.getInstance().click(getXpos(), getYpos());
+        SessionManager.getInstance().click(getXpos(), getYpos());
     }
 
     @Override
@@ -54,25 +54,25 @@ public class Cell extends BaseCell implements View.OnClickListener, View.OnLongC
     }
     private void drawFlag(Canvas canvas){
         Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.flag);
-        drawable.setBounds(0,0, getHeight(), getWidth());
+        drawable.setBounds(0,0, getWidth(), getHeight());
         drawable.draw(canvas);
     }
 
     private void drawMineExploded(Canvas canvas){
         Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.bomb_exploded);
-        drawable.setBounds(0,0, getHeight(), getWidth());
+        drawable.setBounds(0,0, getWidth(), getHeight());
         drawable.draw(canvas);
     }
 
     private void drawNormalMine(Canvas canvas){
         Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.bomb_normal);
-        drawable.setBounds(0,0, getHeight(), getWidth());
+        drawable.setBounds(0,0, getWidth(), getHeight());
         drawable.draw(canvas);
     }
 
     private void drawBtn(Canvas canvas){
         Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.button);
-        drawable.setBounds(0,0, getHeight(), getWidth());
+        drawable.setBounds(0,0, getWidth(), getHeight());
         drawable.draw(canvas);
     }
 
@@ -112,7 +112,7 @@ public class Cell extends BaseCell implements View.OnClickListener, View.OnLongC
                 drawable = ContextCompat.getDrawable(getContext(), R.drawable.number_8);
                 break;
         }
-        drawable.setBounds(0,0, getHeight(), getWidth());
+        drawable.setBounds(0,0, getWidth(), getHeight());
         drawable.draw(canvas);
     }
 }
