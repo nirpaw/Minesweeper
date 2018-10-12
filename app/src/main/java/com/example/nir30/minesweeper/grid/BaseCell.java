@@ -20,6 +20,7 @@ public class BaseCell extends View{
 
     }
 
+
     // getters n setters
     public int getValue() {
         return value;
@@ -29,7 +30,7 @@ public class BaseCell extends View{
         isMine = false;
         isRevealed = false;
         isFlaged = false;
-
+        isClicked = false;
         if(value == -1){
             isMine = true;
         }
@@ -50,6 +51,7 @@ public class BaseCell extends View{
 
     public void setRevealed(boolean revealed) {
         isRevealed = revealed;
+        invalidate();
     }
 
     public boolean isClicked() {
@@ -59,9 +61,9 @@ public class BaseCell extends View{
     public void setClicked() {
         this.isClicked = true;
         this.isRevealed = true;
-
         invalidate();
     }
+
 
     public boolean isFlaged() {
         return isFlaged;

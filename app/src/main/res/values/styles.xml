@@ -1,11 +1,78 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+
         <!-- Customize your theme here. -->
+        <item name="android:typeface">serif</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="level">
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:color">@color/colorLevelText</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="custom_level">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:color">@color/colorLevelText</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="custom_level_text" parent="custom_level">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="win_page_style">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:color">@color/colorLevelText</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="new_record_style" parent="win_page_style">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">45sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:color">@color/colorNewRecord</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        
+    </style>
+
+
+    <style name="statistic_text_view">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="win_btns">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="helpPage">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:typeface">serif</item>
+
+    </style>
+
 
 </resources>

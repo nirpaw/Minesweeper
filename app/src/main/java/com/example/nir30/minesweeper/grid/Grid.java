@@ -14,7 +14,7 @@ public class Grid extends GridView{
 
     public Grid(Context context , AttributeSet attrs){
         super(context,attrs);
-        SessionManager.getInstance().creatBoard(context);
+        SessionManager.getInstance().createBoard(context);
         setNumColumns(SessionManager.numOfCols);
         setAdapter(new GridAddapter());
     }

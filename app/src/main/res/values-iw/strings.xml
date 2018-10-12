@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_game_btn">התחל/י משחק חדש</string>
+    <string name="select_level_btn">בחר/י רמת קושי</string>
+    <string name="quit_dialog">יציאה</string>
+    <string name="sure_to_quit">האם את/ה בטוח/ה שאת/ה רוצה לצאת?</string>
+    <string name="yes_quit_btn">כן</string>
+    <string name="no_quit_btn">לא</string>
+    <string name="beginner_btn">מתחילים</string>
+    <string name="challenging_btn">מאתגר</string>
+    <string name="custom_btn">מותאם אישית...</string>
+    <string name="easy_btn">קל</string>
+    <string name="hard_btn">קשה</string>
+    <string name="normal_btn">בינוני</string>
+    <string name="exit_title">יציאה</string>
+    <string name="help_menu">עזרה</string>
+    <string name="share_menu">שיתוף</string>
+    <string name="width_change_for_custom_level">רוחב</string>
+    <string name="height_change_for_custom_level">גובה</string>
+    <string name="mines_change_for_cusom_level">מוקשים</string>
+    <string name="finish_select_custom_level_btn">סיים/י</string>
+    <string name="select_custom_difficulty">בחר/י רמת קושי מותאמת</string>
+
+
+    <string-array name="DifficultyLevels">
+        <item>מתחילים</item>
+        <item>קל</item>
+        <item>בינוני</item>
+        <item>קשה</item>
+        <item>מאתגר</item>
+        <item>מותאם אישית...</item>
+    </string-array>
+    <string name="cancel_select_custom_level_btn">ביטול</string>
+    <string name="continue_game_option_menu">המשכ/י משחק</string>
+    <string name="app_name">Minesweeper</string>
+    <string name="sure_to_pause_and_stop_game">האם את/ה בטוח/ה שאת/ה רוצה לסיים את המשחק?</string>
+    <string name="stay_btn">המשכ/י</string>
+    <string name="quit_btn">צא/י</string>
+    <string name="end__the_game">סיום המשחק</string>
+    <string name="time_text_view_when_win">זמן:</string>
+    <string name="score_text_view_when_win">תוצאה:</string>
+    <string name="best_score_text_view_when_win">התוצאה הכי טובה:</string>
+    <string name="new_record_tv">שיא חדש!</string>
+    <string name="statistic_btn">סטטיסטיקה</string>
+    <string name="title_activity_statistics">סטטיסטיקה</string>
+    <string name="games_won">משחקים שנוצחו:</string>
+    <string name="total_games">סה\"כ משחקים:</string>
+    <string name="pause_dialog">השהיית משחק</string>
+    <string name="clear_statistics">נקה/י סטטיסטיקה</string>
+    <string name="share_score">שתפ/י</string>
+    <string name="share_with">שתפ/י עם ...</string>
+    <string name="text_to_share">"הסתכל/י! זה השיא שלי בשולה המוקשים: "</string>
+    <string name="can_you_beat">האם את/ה יכול/ה לנצח אותי?</string>
+    <string name="commend_share">היי, אני בדיוק הורדתי את המשחק שולה המוקשים מה PlayStore. זמין בלינק: www.MineSweeper.com</string>
+    <string name="help_page1">לפניך לוח משחק המורכב מריבועים, חלק מהריבועים מכילים מוקשים. אם לחצת על ריבוע המכיל מוקש - נפסלת!  כאשר חשפת את כל הריבועים (מבלי ללחוץ על שום מוקש) - נצחת!</string>
+    <string name="help_page2">לחיצה על ריבוע שלא מכיל מוקש, יחשוף את מספר הריבועים השכנים שלו אשר כן מכילים מוקשים. העזר במידע זה כדי להמנע מלחיצה על מוקשים.</string>
+    <string name="help_page3">בשביל לפתוח ריבוע, לחץ עליו. כדי לסמן ריבוע החשוד כפצצה, לחץ לחיצה ארוכה.</string>
+    <string name="title_activity_help">עזרה</string>
+    <string name="help_page">לפניך לוח משחק המורכב מריבועים, חלק מהריבועים מכילים מוקשים. אם לחצת על ריבוע המכיל מוקש - נפסלת!  כאשר חשפת את כל הריבועים (מבלי ללחוץ על שום מוקש) - נצחת!  לחיצה על ריבוע שלא מכיל מוקש, יחשוף את מספר הריבועים השכנים שלו אשר כן מכילים מוקשים. העזר במידע זה כדי להמנע מלחיצה על מוקשים.  בשביל לפתוח ריבוע, לחץ עליו. כדי לסמן ריבוע החשוד כפצצה, לחץ לחיצה ארוכה.</string>
+    <string name="help_page12">לחיצה על ריבוע שלא מכיל מוקש, יחשוף את מספר הריבועים השכנים שלו אשר כן מכילים מוקשים. העזר במידע זה כדי להמנע מלחיצה על מוקשים.  בשביל לפתוח ריבוע, לחץ עליו. כדי לסמן ריבוע החשוד כפצצה, לחץ לחיצה ארוכה.</string>
+</resources>

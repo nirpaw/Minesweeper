@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/win1"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/win_IV"/>
+
+    <ImageView
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="200dp"
+        android:id="@+id/new_record_Iv"
+        android:src="@drawable/new_record"
+        android:visibility="invisible"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/time_layout"
+        android:layout_below="@+id/win_IV">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_title_Tv"
+            style="@style/win_page_style"
+            android:text="@string/time_text_view_when_win"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_result_Tv"
+            style="@style/win_page_style" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/score_layout"
+        android:layout_below="@+id/time_layout">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/score_title_Tv"
+            style="@style/win_page_style"
+            android:text="@string/score_text_view_when_win"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/score_result_Tv"
+            style="@style/win_page_style" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/best_score_layout"
+        android:layout_below="@+id/score_layout">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/best_score_title_Tv"
+            style="@style/win_page_style"
+            android:text="@string/best_score_text_view_when_win"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/best_score_result_Tv"
+            style="@style/win_page_style" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/best_score_layout">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_game_btn"
+        style="@style/win_btns"
+        android:id="@+id/start_new_game_btn_after_win"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quit_btn"
+        style="@style/win_btns"
+        android:id="@+id/quit_btn"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

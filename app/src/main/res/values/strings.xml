@@ -1,3 +1,61 @@
 <resources>
+    <string name="start_game_btn">Start new game</string>
+    <string name="select_level_btn">Select difficulty level</string>
+    <string name="quit_dialog">Quit</string>
+    <string name="sure_to_quit">Are you sure to quit?</string>
+    <string name="yes_quit_btn">Yes</string>
+    <string name="no_quit_btn">No</string>
+    <string name="beginner_btn">Beginner</string>
+    <string name="easy_btn">Easy</string>
+    <string name="normal_btn">Normal</string>
+    <string name="hard_btn">Hard</string>
+    <string name="challenging_btn">Challenging</string>
+    <string name="custom_btn">Custom...</string>
+    <string name="exit_title">Exit</string>
+    <string name="help_menu">Help</string>
+    <string name="share_menu">Share</string>
+    <string name="width_change_for_custom_level">Width</string>
+    <string name="height_change_for_custom_level">Height</string>
+    <string name="mines_change_for_cusom_level">Mines</string>
+    <string name="finish_select_custom_level_btn">Finish</string>
+    <string name="select_custom_difficulty">Select custom difficulty</string>
+
+
+    <string-array name="DifficultyLevels">
+        <item>Beginner</item>
+        <item>Easy</item>
+        <item>Normal</item>
+        <item>Hard</item>
+        <item>Challenging</item>
+        <item>Custom...</item>
+    </string-array>
+
+    <string name="cancel_select_custom_level_btn">Cancle</string>
+    <string name="continue_game_option_menu">Continue game</string>
     <string name="app_name">Minesweeper</string>
+    <string name="stay_btn">Continue</string>
+    <string name="quit_btn">Exit</string>
+    <string name="sure_to_pause_and_stop_game">Are you sure that you want to end the game?</string>
+    <string name="end__the_game">End the game</string>
+    <string name="time_text_view_when_win">Time:</string>
+    <string name="score_text_view_when_win">Score:</string>
+    <string name="best_score_text_view_when_win">Best score:</string>
+    <string name="new_record_tv">New record!</string>
+    <string name="statistic_btn">Statistics</string>
+    <string name="title_activity_statistics">Statistics</string>
+    <string name="total_games">Total games:</string>
+    <string name="games_won">Games won:</string>
+    <string name="pause_dialog">Pause game</string>
+    <string name="clear_statistics">Clear statistics</string>
+    <string name="share_score">Share</string>
+    <string name="share_with">Share with ...</string>
+    <string name="text_to_share">Look! this is my score in Minesweeper:</string>
+    <string name="can_you_beat">Can you beat me?</string>
+    <string name="commend_share">Hey,i just download the new Minesweeper game from PlayStore. Avilable here: www.MineSweeper.com</string>
+    <string name="title_activity_help">Help</string>
+    <string name="help_page1">You are presented with a board of squares. Some squares contain mines (bombs), others don\'t. If you click on a square containing a bomb, you lose. If you manage to click all the squares (without clicking on any bombs) you win.</string>
+    <string name="help_page2">Clicking a square which doesn\'t have a bomb reveals the number of neighbouring squares containing bombs. Use this information plus some guess work to avoid the bombs.</string>
+    <string name="help_page3">To open a square, click on it. To mark a square you think is a bomb, make a long-click on it.</string>
+    <string name="help_page">You are presented with a board of squares. Some squares contain mines (bombs), others don\'t. If you click on a square containing a bomb, you lose. If you manage to click all the squares (without clicking on any bombs) you win.  Clicking a square which doesn\'t have a bomb reveals the number of neighbouring squares containing bombs. Use this information plus some guess work to avoid the bombs.  To open a square, click on it. To mark a square you think is a bomb, make a long-click on it.</string>
+    <string name="help_page12">Clicking a square which doesn\'t have a bomb reveals the number of neighbouring squares containing bombs. Use this information plus some guess work to avoid the bombs.  To open a square, click on it. To mark a square you think is a bomb, make a long-click on it.</string>
 </resources>

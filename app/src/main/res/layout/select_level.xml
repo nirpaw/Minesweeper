@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/beginner_btn"
+        style="@style/level"
+        android:id="@+id/beginner_Tv"/>
+    <!--8*8 / 5 -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/easy_btn"
+        style="@style/level"
+        android:id="@+id/easy_Tv"/>
+    <!--9*9 / 10-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/normal_btn"
+        style="@style/level"
+        android:id="@+id/normal_Tv"/>
+    <!--12*9 / 20-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hard_btn"
+        style="@style/level"
+        android:id="@+id/hard_Tv"/>
+
+    <!--16*9 / 30-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/challenging_btn"
+        style="@style/level"
+        android:id="@+id/challenging_Tv"/>
+
+    <!--16*16 / 50-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/level"
+        android:id="@+id/custom_Tv"
+        android:text="@string/custom_btn"/>
+</LinearLayout>

@@ -1,7 +1,7 @@
 package com.example.nir30.minesweeper;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.media.MediaPlayer;
 
 import com.example.nir30.minesweeper.Generator.BoardGenerator;
 import com.example.nir30.minesweeper.grid.Cell;
@@ -9,37 +9,50 @@ import com.example.nir30.minesweeper.grid.Cell;
 public class SessionManager {
 
     private int totalFlagsCounter = 0;
-    private int correctFlagsCounter = 0;
     private static SessionManager instance;
     private Context context;
     int[][] gameBoard; // generated logic board
-    Cell[][] MinesweeperGrid = new Cell[numOfRows][numOfCols];
-
-    public static final int numOfMines = 5;
-    public static final int numOfRows = 9;
-    public static final int numOfCols = 10;
+    Cell[][] MinesweeperGrid ;
+    public boolean gameIsOver = false;
+    public static int numOfMines = 2;
+    public static int numOfRows = 8;
+    public static int numOfCols = 8;
 
     public static int getSize () {
         return numOfRows * numOfCols;
     }
 
     public static SessionManager getInstance() {
-        if (instance == null) {
+        if (instance == null ) {
             instance = new SessionManager();
         }
         return instance;
     }
 
     private SessionManager() {
-
     }
 
-    public void creatBoard(Context context) {
+    public void setGridContext(){
+        this.context = context;
+    }
+
+    public void createBoard(Context context) {
         this.context = context;
         // Create the board and store it
+        this.gameIsOver = false;
+        MinesweeperGrid = new Cell[numOfRows][numOfCols];
         BoardGenerator gameBoardGenerator = new BoardGenerator(numOfRows, numOfCols,  numOfMines);
         gameBoard = gameBoardGenerator.getBoardMatrix();
         setGrid(context, gameBoard);
+    }
+
+    public void resetBoard(){
+        this.totalFlagsCounter = 0;
+        this.gameIsOver = false;
+        BoardGenerator gameBoardGenerator = new BoardGenerator(numOfRows, numOfCols,  numOfMines);
+        gameBoard = gameBoardGenerator.getBoardMatrix();
+        setGrid(context, gameBoard);
+        GameActivity.changeMinesLeftTV(numOfMines - totalFlagsCounter);
     }
 
     public Cell getCellAt(int position) {
@@ -66,11 +79,15 @@ public class SessionManager {
     }
 
     public void  click (int Xpos, int Ypos){
-
         if(Xpos >= 0 && Ypos >= 0 && Xpos < numOfRows && Ypos < numOfCols && !getCellAt(Xpos, Ypos).isClicked()){
             if(getCellAt(Xpos, Ypos).isFlaged()){
                 return;
             }
+            if(gameIsOver)
+            {
+                return;
+            }
+
             getCellAt(Xpos, Ypos).setClicked();
             // check if neibers are 0`S
             if (getCellAt(Xpos, Ypos).getValue() == 0 ) {
@@ -83,50 +100,87 @@ public class SessionManager {
                 }
             }
             if(getCellAt(Xpos, Ypos).isMine()){
+                GameActivity.startBlink(getCellAt(Xpos, Ypos), 100,5);
                 onGameLost();
             }
         }
-//        checkEnd();
+        checkWinning();
     }
 
     public void flag(int x , int y){
+        if(gameIsOver){
+            return;
+        }
         if(getCellAt(x,y).isClicked()){
             return;
         }
         boolean isFlagged = getCellAt(x, y).isFlaged();
         if(!isFlagged) {
             getCellAt(x, y).setFlaged(true);
-            if(getCellAt(x, y ).isMine()){
-                this.correctFlagsCounter++;
-            }
             totalFlagsCounter++;
         }else {
             getCellAt(x,y).setFlaged(false);
-            if (getCellAt(x,y).isMine()){
-                this.correctFlagsCounter--;
-            }
             totalFlagsCounter--;
         }
+        GameActivity.changeMinesLeftTV(numOfMines - totalFlagsCounter);
         getCellAt(x , y).invalidate();
-        checkWinning();
+    }
+    public  void setTotalFlagsCounterToZero(){
+        totalFlagsCounter = 0;
     }
 
-    private void onGameLost(){ //TODO: BANNNER ? ACTIVITY?
-
-        Toast.makeText(context , "Gmae over " , Toast.LENGTH_SHORT).show();
+    private void onGameLost(){
+        gameIsOver = true;
+        MediaPlayer ring= MediaPlayer.create(context, R.raw.bombexplodingsound);
+        ring.start();
+        RevealedAllCells();
+        GameActivity.onGameActivityLost();
     }
-
     private void checkWinning(){
-        if (correctFlagsCounter == numOfMines){
+        int revealedsCounter = 0 ;
+        for(int i = 0 ; i < numOfRows ; i++){
+            for(int j = 0 ; j < numOfCols ; j++){
+                if(MinesweeperGrid[i][j].isRevealed()){
+                    revealedsCounter++;
+                }
+            }
+        }
+        if (revealedsCounter == getSize()-numOfMines){
             onGameWin();
         }
     }
 
-    private void onGameWin(){//TODO: BANNNER ? ACTIVITY?
-        Toast.makeText(context , "WIN! " , Toast.LENGTH_SHORT).show();
+    private void onGameWin(){
+        gameIsOver = true;
+        String timeString = GameActivity.getCurrentTime();
+        String [] strArr = timeString.split(":");
+        int seconds=0;
+        seconds += Integer.parseInt(strArr[1]);
+        seconds += Integer.parseInt(strArr[0]) * 60;
+
+        RevealedAllCells();
+        GameActivity.sessionInProgress = false;
+        int gameScore = calculateScore(seconds);
+        GameActivity.onGameActivityWin(context, gameScore,timeString);
+
     }
 
+    private int calculateScore(int intTime){
+        double size = getSize();
+        double time = intTime;
+        Double score = ((numOfMines / size * 0.5) +  (1 / time * 0.5)) * 1000;
+        return score.intValue();
+    }
+
+    private void RevealedAllCells(){
+        for(int i = 0 ; i < numOfRows; i++){
+            for(int j = 0 ; j < numOfCols ; j++){
+                getCellAt(i,j).setRevealed(true);
+            }
+        }
+    }
     public int getTotalFlagsCounter() {
         return totalFlagsCounter;
     }
+
 }

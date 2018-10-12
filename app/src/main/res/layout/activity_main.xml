@@ -1,12 +1,37 @@
-<LinearLayout android:layout_width="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/bomb10">
+
 
     <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="50dp"
-        android:id="@+id/btn_start"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:text="START" />
+        android:layout_marginTop="200dp"
+        android:text="@string/start_game_btn"
+        android:id="@+id/start_game_btn"/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/select_level_btn"
+        android:id="@+id/level_btn"/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/statistic_btn"
+        android:text="@string/statistic_btn"/>
+
+
 </LinearLayout>
